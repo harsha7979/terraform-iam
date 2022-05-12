@@ -53,11 +53,11 @@ resource "aws_iam_instance_profile" "ec2_profile" {
 }
 
 resource "aws_instance" "ebs_instance_example" {
-  ami           = lookup(var.ami_id, var.region)
+  ami           = var.ami_id
   instance_type = var.instance_type
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
   # key name
-  key_name = var.key_name
+  key_name = "RDSKEY"
   # User data passing through template rendering
 
   tags = {
